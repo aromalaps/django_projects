@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row bb2  ">
+    <div class="col-12 ms-0 bb2c h-100 rounded-bottom ">
+        <h4 class=" spotify_playlist ms-0 mt-1">
+            Spotify Playlists
+        </h4>
+        <div class="contain">
+            <div class="row card_holder ">
+                {% for song in songfile %}
+                <div class="card col-6 col-md-3 m-1  ">
+                    <div class="img_holder">
+                        <a href="/details/{{song.id}}">
+                            <img src="{{song.image.url}}" alt="">
+                        </a>
+                    </div>
+                    <div class="Song_Name">
+                        <h4>{{song.name}}</h4>
+                        <p>{{song.description}} </p>
+                    </div>
+                    <div class="play-icon">
+                        <div class="circle">
+                            <div class="triangle">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

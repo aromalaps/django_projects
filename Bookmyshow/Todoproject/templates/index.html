@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load static %}
+<div id="carouselExampleIndicators" class="carousel slide carouselbackgroundcolor" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item px-4 py-2  active">
+      <img src="{% static './image/img1.jpg' %}" class="d-block w-100 rounded-3" alt="...">
+    </div>
+    <div class="carousel-item px-4 py-2">
+      <img src="{% static './image/img2.jpg' %}" class="d-block w-100 rounded-3" alt="...">
+    </div>
+    <div class="carousel-item px-4 py-2 ">
+      <img src="{% static './image/img3.jpg' %}" class="d-block w-100 rounded-3" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+<h2 class="recommended_movies">Recommended Movie</h2>
+<div class="card-slot row ps-4">
+  {% for movie in movies %}
+  <div class=" col-6  col-md-2 cardsss ">
+    <a href="/details/{{movie.id}}">
+      <img class="card-img-top rounded-3" src="{{movie.image.url}}" alt="Card image cap">
+    </a>
+    <div class="card-body ">
+      <h5 class="card-title ps-1 ">{{ movie.name }}</h5>
+      <p class="card-text ps-1 ">{{ movie.category }}</p>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
