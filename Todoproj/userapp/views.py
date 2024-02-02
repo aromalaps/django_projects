@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
+
+# Create your views here.
+
 def registerUser(req):
     if req.method=='POST':
         fname=req.POST.get("fname","")
@@ -31,14 +34,19 @@ def loginUser(req):
         username=req.POST.get("username","")
         password=req.POST.get("password","")
         user=auth.authenticate(username=username,password=password)
-        print(user)
+    
         if user is not None:
           auth.login(req,user)
-          return redirect("home")
+          print(user)
+          req.session['user']=str(user)
+          return redirect("phones:Home")
         else:
             messages.info(req, "invalidcredentials")
+          
             return redirect('auth:login')
+
     return render(req, 'loginuser.html')
+
 def logoutUser(req):
     auth.logout(req)
-    return redirect("home")
+    return redirect("phones:Home")

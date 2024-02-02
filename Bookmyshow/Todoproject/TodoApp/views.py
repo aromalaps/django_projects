@@ -11,7 +11,6 @@ def Home(req):
 
 def Form(req):
     if req.method=="POST": 
-        
         name=req.POST.get('name','')
         rate=req.POST.get('rate','')
         screen=req.POST.get('screen','')
